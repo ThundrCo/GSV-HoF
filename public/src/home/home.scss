@@ -1,19 +1,8 @@
 @import '../shared/base.scss';
 
-.big-container{
+.homeContainer{
 	margin:0;
 	padding:0;
-	width:100%;
-}
-.col-title{
-	color:#520063;
-}
-.search{
-	border-radius: 0;
-}
-td{
-	font-size: 12px;
-}
-.icon-hov:hover{
-	text-decoration: none;
+	width:95%;
+	background-color: #3df;
 }

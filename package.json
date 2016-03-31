@@ -10,6 +10,7 @@
   "dependencies": {
     "body-parser": "~1.4.2",
     "bower": "^1.7.0",
+    "edit-google-spreadsheet": "^0.2.21",
     "ejs": "^2.3.1",
     "express": "~4.9.x",
     "google-spreadsheet": "^1.0.1",
