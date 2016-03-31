@@ -1,0 +1,11 @@
+{
+  "name": "GSV-HoF",
+  "version": "0.0.1",
+  "dependencies": {
+    "angular-bootstrap": "~0.14.3",
+    "angular-route": "~1.5.3",
+    "bootstrap": "~3.3.6",
+    "font-awesome": "fontawesome#~4.5.0",
+    "angular": "~1.5.3"
+  }
+}

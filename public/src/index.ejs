@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<base href="/">
+		
+		<meta charset="UTF-8">
+		<!--CSS-->
+		<link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.min.css" type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+		<link href='assets/fonts/flaticon.css' rel='stylesheet' type='text/css'>
+		<link rel='stylesheet' href="home/home.css" type='text/css'>
+	</head>
+	<body ng-app="GSVHoF">
+		<% include shared/_nav.ejs %>
+		<% include shared/_js.ejs %>
+		
+		<div class="content-container">
+		<div ng-view autoscroll="true"></div>
+	</div>
+	</body>
+</html>
