@@ -1,30 +1,48 @@
 <div class="homeContainer">
 	<div class="row">
 		<div class="col-xs-12">
-			<form  ng-submit="submit()"  ng-controller="formController">
-	<div class="row">
-		<div class="col-md-5">
-			<div class="form-group">
-				<label for="name-input">Your Name</label>
-				<input type="value" class="form-control col-xs-5" id="name-input"  ng-model="response.voterName" placeholder="Full Name">
+			<form ng-controller="formController">
+	<div ng-show="firstPage">
+		<div class="row">
+			<div class="col-md-5">
+				<div class="form-group">
+					<label for="name-input">Your Name</label>
+					<input type="value" class="form-control col-xs-5" id="name-input"  ng-model="response.voterName" placeholder="Full Name">
+				</div>
 			</div>
 		</div>
-	</div>
-	<div ng-repeat="person in hof">
-		<div class="checkbox checkbox-circle checkbox-success">
-			<input type="checkbox" name="person-{{$index}}" value="{{person.name}}" ng-disabled="tooManySelected &&  !person.selected" ng-model="person.selected" id="person-{{$index}}">
-			<label for="person-{{$index}}">{{person.name}}</label>
+		<div ng-repeat="person in hof">
+			<div class="checkbox checkbox-circle checkbox-success">
+				<input type="checkbox" name="person-{{$index}}" value="{{person.name}}" ng-disabled="tooManySelected &&  !person.selected" ng-model="person.selected" id="person-{{$index}}">
+				<label for="person-{{$index}}">{{person.name}}</label>
+			</div>
 		</div>
+	  	<button id="next" ng-click="next()" class="btn btn-default" ng-disabled="invalidSelection || !response.voterName">Submit</button>
+		<div id="invalid-alert" class="alert alert-danger" ng-hide="!invalidSelection && response.voterName">
+			<h5 ng-hide="!invalidSelection">Please select {{minSelection - response.selectedNames.length}} more candidates</h5>
+			<h5 ng-hide="response.voterName">Please fill out your name</h5>
+		</div>	
+		<div id="max-alert" class="alert alert-success" ng-hide="!tooManySelected">
+			Reached Max Number of Selection.
+		</div>	
 	</div>
-  	<button id="submit" type="submit" class="btn btn-default" ng-disabled="invalidSelection || !response.voterName">Submit</button>
-	<div id="invalid-alert" class="alert alert-danger" ng-hide="!invalidSelection && response.voterName">
-		<h5 ng-hide="!invalidSelection">Please select {{minSelection - response.selectedNames.length}} more candidates</h5>
-		<h5 ng-hide="response.voterName">Please fill out your name</h5>
-	</div>	
-	<div id="max-alert" class="alert alert-success" ng-hide="!tooManySelected">
-		Reached Max Number of Selection.
-	</div>	
+	<div ng-hide="firstPage">
+		<div class="row">
+			<div class="col-md-12">
+				<div ng-repeat="person in response.selectedNames">
+					{{person}}
+				</div>
+			</div>
+		</div>
+		<button id="submit" ng-click="submit()" class="btn btn-default">Submit</button>
+	</div>
+	
 </form>
+			
+			
+
+		</div>
+		<div class="col-xs-12">
 		</div>
 	</div>
 </div>

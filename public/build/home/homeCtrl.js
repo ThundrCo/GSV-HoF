@@ -25,7 +25,15 @@ angular.module('homeCtrl', ['homeService'])
 	// ];
 	
 })
-.controller('formController',function(Nominee,$scope,$log,$window) {
+.controller('formController',function($rootScope, Nominee,$scope,$log,$window) {
+	
+	$scope.firstPage = true;
+	$scope.next = function(){
+			console.log("CLICK NET");
+			$scope.firstPage = false;
+			console.log($scope.firstPage);
+	}
+
 	var vm = this;
 	$scope.hof = [
 		{id: 0 , name: "Art Levinson", firstName:"Art", lastName:"Levinson", selected:false},
@@ -48,7 +56,7 @@ angular.module('homeCtrl', ['homeService'])
 	};    
 	$scope.invalidSelection = true;
 	$scope.tooManySelected = false; // disable checkboxes if reach # of selection
-	$scope.minSelection = 10;
+	$scope.minSelection = 2;
 
 
 	$scope.selectedPeople = function selectedPeople() {
@@ -63,6 +71,9 @@ angular.module('homeCtrl', ['homeService'])
 		$scope.response.selectedLastName = nv.map(function (hof) {
 			return hof.lastName;
 		});
+		$scope.response.selectedNames = nv.map(function (hof) {
+			return hof.name;
+		});
 		$scope.response.selectedID = nv.map(function (hof) {
 			return hof.id;
 		});
@@ -71,32 +82,31 @@ angular.module('homeCtrl', ['homeService'])
 		$scope.tooManySelected = $scope.response.selectedFirstName.length >= $scope.minSelection ? true : false;
 		$log.log($scope.invalidSelection+" "+$scope.response.selectedFirstName.length);
 	}, true);
-
-
-	$scope.submit = function() {
-		vm.processing = true;
-		vm.message = '';
-		// $log.log($scope.response);
-		// $log.log($scope.response.selectedFirstName);
-		// console.log($scope.response);
-		for(var index = 0 ;index< $scope.response.selectedFirstName.length; index++){
-			// console.log($scope.response.selectedFirstName[index]);
-			// console.log($scope.response.selectedLastName[index]);
-			var entry = {
-				voterName : $scope.response.voterName,
-				nomineeID : $scope.response.selectedID[index],
-				firstName : $scope.response.selectedFirstName[index],
-				lastName : $scope.response.selectedLastName[index]
-			}
-			// $log.log("Entry " + entry.firstName + entry.lastName);
-			Nominee.create(entry) 
-				.success(function(data){
-					vm.processing=false;
-					vm.message = data.message;
-					// $log.log(vm.message);
-				});
-		}
-		$window.location.href = '/rank';
-	}
+	// $scope.submit = function() {
+	// 	vm.processing = true;
+	// 	vm.message = '';
+	// 	// $log.log($scope.response);
+	// 	// $log.log($scope.response.selectedFirstName);
+	// 	// console.log($scope.response);
+	// 	for(var index = 0 ;index < $scope.response.selectedFirstName.length; index++){
+	// 		// console.log($scope.response.selectedFirstName[index]);
+	// 		// console.log($scope.response.selectedLastName[index]);
+	// 		var entry = {
+	// 			voterName : $scope.response.voterName,
+	// 			nomineeID : $scope.response.selectedID[index],
+	// 			firstName : $scope.response.selectedFirstName[index],
+	// 			lastName : $scope.response.selectedLastName[index]
+	// 		}
+	// 		// $log.log("Entry " + entry.firstName + entry.lastName);
+	// 		Nominee.create(entry) 
+	// 			.success(function(data){
+	// 				vm.processing=false;
+	// 				vm.message = data.message;
+	// 				// $log.log(vm.message);
+	// 			});
+	// 	}
+	// 	$window.location.href = '/rank';
+	// 	$log.log($scope.response);
+	// }
 })
 
