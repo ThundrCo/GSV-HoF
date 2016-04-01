@@ -48,7 +48,7 @@ angular.module('homeCtrl', ['homeService'])
 	};    
 	$scope.invalidSelection = true;
 	$scope.tooManySelected = false; // disable checkboxes if reach # of selection
-	$scope.minSelection = 2;
+	$scope.minSelection = 10;
 
 
 	$scope.selectedPeople = function selectedPeople() {
