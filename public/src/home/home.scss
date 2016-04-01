@@ -1,8 +1,17 @@
 @import '../shared/base.scss';
 
 .homeContainer{
-	margin:0;
+	margin:auto;
 	padding:0;
-	width:95%;
-	background-color: #3df;
+	width:75%;
+	.control-label{
+		text-align: right;
+	}
+	.alert-danger{
+		margin-top: 10px;
+		display:none;
+	}
+	#submit:hover + #invalid-alert{
+	    display:block;
+	}
 }

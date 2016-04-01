@@ -11,7 +11,7 @@ var app = express();
 // var db = require('./config/db');
 var mongoUri = process.env.MONGOLAB_URI ||
 	process.env.MONGOHQ_URL ||
-  	'mongodb://localhost:27017/GSV-HoF';
+  	'mongodb://localhost:27017/GSVHoF';
 mongoose.connect(mongoUri);
 mongoose.connection.on("open", function(){
   console.log("Connected to database");

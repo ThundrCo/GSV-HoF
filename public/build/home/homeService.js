@@ -1,28 +1,16 @@
 angular.module('homeService', [])
 
 
-.factory('Alum', function($http) {
+.factory('Nominee', function($http) {
 
 
-	var alumFactory = {};
+	var nomineeFactory = {};
 
-	alumFactory.all = function() {
-		return $http.get('/api/alums');
-	}
-
-	alumFactory.getData = function() {
-		return $http.get('/api/get-data');
-	}
-
-	alumFactory.getDemo = function() {
-		return $http.get('/api/demo');
-	}
-
-	alumFactory.create = function(alumData) {
-		return $http.post('/api/', alumData);
+	nomineeFactory.create = function(voterData) {
+		return $http.post('/api/hof', voterData);
 	}	
 
-	return alumFactory;
+	return nomineeFactory;
 
 
 });

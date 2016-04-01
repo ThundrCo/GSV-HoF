@@ -1,5 +1,25 @@
 .content-container {
-  background-color: #3df;
-  width: 95%;
+  width: 100%;
+  margin: 0;
+  padding: 0; }
+
+.footer-text {
+  margin-top: 100px; }
+
+.fa-hide {
+  color: #fff; }
+
+.clear {
+  clear: both; }
+
+.homeContainer {
   margin: auto;
-}
+  padding: 0;
+  width: 75%; }
+  .homeContainer .control-label {
+    text-align: right; }
+  .homeContainer .alert-danger {
+    margin-top: 10px;
+    display: none; }
+  .homeContainer #submit:hover + #invalid-alert {
+    display: block; }
